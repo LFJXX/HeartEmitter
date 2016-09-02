@@ -56,7 +56,7 @@
     scaleAnimation.fromValue = [NSNumber numberWithFloat:0.5];
     scaleAnimation.toValue = [NSNumber numberWithFloat:1.0];
     
-    // 关键帧动画（位置）
+    // 位置动画
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef path = CGPathCreateMutable();
     
@@ -66,13 +66,13 @@
     
     CGPathMoveToPoint(path, nil,  X, Y);
     
-    int controlX = (arc4random()%(100+1))-50; //动画X轴偏移位置
-    int controlY = (arc4random()%(130+1))+50;
+    int offsetX = (arc4random()%(100+1))-50; //动画X轴偏移位置
+    int offsetY = (arc4random()%(130+1))+50;
     
     // 终点
-    int endX = controlX + X;
+    int endX = offsetX + X;
     int endY = 100;
-    CGPathAddQuadCurveToPoint(path, nil, X - controlX, Y - controlY, endX,endY);
+    CGPathAddQuadCurveToPoint(path, nil, X-offsetX, Y-offsetY, endX,endY);
     
     positionAnimation.path = path;
     CGPathRelease(path);
